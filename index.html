@@ -171,9 +171,9 @@
                         myView.html
                     </p>
             <pre ng-non-bindable><code>
-                &lt;form ng-controller="MyController"&gt;
-                &lt;input type="text" ng-model="name"&gt;
-                &lt;/form&gt;
+  &lt;form ng-controller="MyController"&gt;
+    &lt;input type="text" ng-model="name"&gt;
+  &lt;/form&gt;
             </code></pre>
                 </div>
             </section>
@@ -303,6 +303,7 @@
             <section data-background-color="#cb4b16">
                 <h3><span class="white">Question</span></h3>
                 <h1><span class="white">AngularJS or JSF?</span></h1>
+                <h1 class="fragment"><span class="white">Or GWT?</span></h1>
             </section>
             <section data-background="examples/assets/thanks.gif"><h1><span class="magenta">Thanks</span></h1></section>
             </div>
@@ -313,20 +314,27 @@
 
 		<script>
 
-						// Full list of configuration options available here:
-			// https://github.com/hakimel/reveal.js#configuration
-			Reveal.initialize({
-				controls: true,
-				progress: true,
-				history: true,
-				center: true,
+            // Full list of configuration options available here:
+            // https://github.com/hakimel/reveal.js#configuration
+            Reveal.initialize({
+                controls: false,
+                progress: true,
+                history: true,
+                center: true,
 
-				theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
-				transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
+                theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+                transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
 
-				// Parallax scrolling
-				// parallaxBackgroundImage: 'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg',
-				// parallaxBackgroundSize: '2100px 900px',
+                multiplex: {
+                    // Example values. To generate your own, see the socket.io server instructions.
+                    secret: '', // null so the clients do not have control of the master presentation
+                    id: 'b8230cc77436495e', // id, obtained from socket.io server
+                    url: 'modernjavascript.herokuapp.com:80' // Location of socket.io server
+                },
+
+                // Parallax scrolling
+                // parallaxBackgroundImage: 'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg',
+                // parallaxBackgroundSize: '2100px 900px',
 
 				// Optional libraries used to extend on reveal.js
 				dependencies: [
@@ -334,7 +342,9 @@
 					//{ src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
 					//{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
 					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
-					{ src: 'plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } }
+					{ src: 'plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+                    { src: '//cdnjs.cloudflare.com/ajax/libs/socket.io/0.9.10/socket.io.min.js', async: true },
+                    { src: 'plugin/multiplex/client.js', async: true }
 					//{ src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } },
 				]
 
