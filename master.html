@@ -7,7 +7,7 @@
     <title>WebApps with AngularJS</title>
 
     <meta name="description" content="WebApps with AngularJS">
-    <meta name="author" content="Henk Bakker">
+    <meta name="author" content="Patrick de Wit">
 
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -18,7 +18,7 @@
     <link rel="stylesheet" href="css/theme/solarized.css" id="theme">
     <link rel="stylesheet" href="css/theme/custom.css">
 
-    <link rel="stylesheet" href="lib/css/sunburst.css">
+    <link rel="stylesheet" href="lib/css/solarized_dark.css">
 
     <script src="examples/js/angular.min.js"></script>
 
@@ -50,25 +50,24 @@
     <p>
         <img src="examples/assets/angularjs.png">
     </p>
-
 </section>
 
 <section>
     <section>
-        <img src="examples/assets/henk.jpg" height="300"/>
+        <img src="examples/assets/patrick.jpg" height="300"/>
 
-        <h3>Henk Bakker</h3>
+        <h3>Patrick de Wit</h3>
 
-        <p>Software Engineer Java, Application New Technology</p>
+        <p>Front End Software Engineer</p>
     </section>
     <section>
-        <p><span class="show-off">Things</span> i like:</p>
+        <p><span class="show-off">Things</span> I like:</p>
         <ul>
-            <li>Mac's</li>
             <li>JavaScript</li>
-            <li>Game of Thrones</li>
-            <li>Java EE & Spring</li>
-            <li>Arrow</li>
+            <li>Skiing</li>
+            <li>Traveling</li>
+            <li>Suits</li>
+            <li>White Collar</li>
         </ul>
     </section>
 </section>
@@ -79,19 +78,11 @@
     <p>by Jens Ohlig</p>
 </section>
 
-<section data-background-color="#2aa198" class="quote">
-    <h2><q>"JavaScript is the only language people feel like they don't need to learn to use it"</q></h2>
-
-    <p>by Douglas Crockford</p>
-</section>
-
-<section data-background="examples/assets/download.gif"></section>
-
 <section>
     <h1>What is <span class="show-off">AngularJS</span></h1>
 
-    <h3>It's a structural framework for dynamic web apps<br/> that's easy to maintain, in a fast and testable
-        way.</h3>
+    <h3>An open-source web application framework maintained by Google<br/><br/>
+    	that helps developing SPA's</h3>
 </section>
 
 <section>
@@ -118,33 +109,33 @@
 
 <section>
     <h2>The simplest example</h2>
-          <pre ng-non-bindable><code>
-              &lt;!DOCTYPE html&gt;
-              &lt;html ng-app&gt;
-              &lt;head&gt;
-              &lt;script src="js/angular.min.js"&gt;&lt;/script&gt;
-              &lt;/head&gt;
-              &lt;body&gt;
-              &lt;form&gt;
-              &lt;label&gt;Your name?&lt;/label&gt;
-              &lt;input type="text" ng-model="name" placeholder="Your name?"&gt;
-              &lt;/form&gt;
-              &lt;h3&gt;My name is {{ name }}!&lt;/h3&gt;
-              &lt;/body&gt;
-              &lt;/html&gt;
-          </code></pre>
+        <pre ng-non-bindable><code>
+            &lt;!DOCTYPE html&gt;
+            &lt;html ng-app&gt;
+                &lt;head&gt;
+                    &lt;script src="js/angular.min.js"&gt;&lt;/script&gt;
+                &lt;/head&gt;
+                &lt;body&gt;
+                    &lt;form&gt;
+                        &lt;label&gt;Your name?&lt;/label&gt;
+                        &lt;input type="text" ng-model="name" placeholder="Your name?"&gt;
+                    &lt;/form&gt;
+                    &lt;h3&gt;My name is {{ name }}!&lt;/h3&gt;
+                &lt;/body&gt;
+            &lt;/html&gt;
+        </code></pre>
 
     <div class="hide-in-print mt fragment">
         <hr>
         <!doctype html>
         <html ng-app>
-        <body class="mt">
-        <form>
-            <label>What's your name?</label>
-            <input class="big-input" type="text" ng-model="name" placeholder="What's your name?">
-        </form>
-        <h3 class="mt">My name is <span class="show-off">{{ name }}</span>!</h3>
-        </body>
+	        <body class="mt">
+		        <form>
+		            <label>What's your name?</label>
+		            <input class="big-input" type="text" ng-model="name" placeholder="What's your name?">
+		        </form>
+		        <h3 class="mt">My name is <span class="show-off">{{ name }}</span>!</h3>
+	        </body>
         </html>
     </div>
 </section>
@@ -161,42 +152,84 @@
         <p class="mt">
             myController.js
         </p>
-            <pre><code>
-                function MyController($scope) {
-                $scope.name = 'Henk Bakker';
-                }
-            </code></pre>
+        <pre><code>
+            function MyController($scope) {
+                $scope.name = 'Patrick de Wit';
+            }
+        </code></pre>
 
         <p class="mt">
             myView.html
         </p>
-            <pre ng-non-bindable><code>
-                &lt;form ng-controller="MyController"&gt;
+        <pre ng-non-bindable><code>
+            &lt;form ng-controller="MyController"&gt;
                 &lt;input type="text" ng-model="name"&gt;
-                &lt;/form&gt;
-            </code></pre>
+            &lt;/form&gt;
+        </code></pre>
     </div>
 </section>
 
 <section>
-    <h2>Controllers</h2>
+	<section>
+		<h2>Controllers</h2>
 
-    <p>The controller is a function that augment the <span class="show-off">$scope</span> object.<br>
-        It's used to add a value or to add a behavior to the <span class="show-off">$scope</span>.</p>
+	    <p>The controller is a function that augments the <span class="show-off">$scope</span> object.<br/>
+	        It's used to add a value or to add a behavior to the <span class="show-off">$scope</span>.</p>
 
-          <pre ng-non-bindable class="mt fragment"><code>
-              function TodoCtrl($scope) {
-              $scope.todos = [
-              { text: 'Learn AngularJS', done: true  },
-              { text: 'Create an App',   done: false }
-              ];
+	    <pre ng-non-bindable class="mt fragment"><code>
+	        function TodoCtrl($scope) {
+	            $scope.todos = [
+	                { text: 'Learn AngularJS', done: true  },
+	                { text: 'Create an App',   done: false }
+	            ];
 
-              $scope.addTodo = function () {
-              $scope.todos.push({ text: $scope.todoText, done: false });
-              $scope.todoText = '';
-              };
-              };
-          </code></pre>
+	            $scope.addTodo = function () {
+	                $scope.todos.push({ text: $scope.todoText, done: false });
+	                $scope.todoText = '';
+	            };
+	        };
+	    </code></pre>
+    </section>
+    <section>
+    	<h2>Result</h2>
+
+        <!doctype html>
+        <html ng-app>
+            <body>
+                <script>
+                    function TodoCtrl($scope) {
+                        $scope.todos = [
+                            { text: 'Learn AngularJS', done: true },
+                            { text: 'Create an App', done: false }
+                        ];
+
+                        $scope.addTodo = function () {
+                            if ($scope.todoText) {
+                                $scope.todos.push({ text: $scope.todoText, done: false });
+                                $scope.todoText = '';
+                            }
+                        };
+                    };
+                </script>
+
+                <div class="mt" ng-controller="TodoCtrl">
+                    <ul class="no-bullets">
+                        <li ng-repeat="todo in todos">
+                            <label>
+                                <input type="checkbox" ng-model="todo.done" class="big-checkbox">
+                                <span class="done-{{ todo.done }}">{{ todo.text }}</span>
+                            </label>
+                        </li>
+                    </ul>
+                    <form class="mt" ng-submit="addTodo()">
+                        <input placeholder="add new task" class="big-input" type="text" ng-model="todoText">
+                        <button class="big-button" type="submit">Add</button>
+                    </form>
+                    <small class="fragment mt">{{ todos | json }}</small>
+                </div>
+            </body>
+        </html>
+    </section>
 </section>
 
 <section>
@@ -233,21 +266,21 @@
             <small>3</small>
         </h2>
         <p>How to use <i>directives</i></p>
-          <pre ng-non-bindable class="mt"><code>
-              &lt;!doctype html&gt;
-              &lt;html ng-app="myApp"&gt;
-              &lt;head&gt;
-              &lt;script src="../js/angular.min.js"&gt;&lt;/script&gt;
-              &lt;/head&gt;
-              &lt;body&gt;
-              &lt;ul ng-controller="myListController"&gt;
-              &lt;li ng-repeat="item in items"&gt;
-              {{ item.name }}
-              &lt;/li&gt;
-              &lt;/ul&gt;
-              &lt;/body&gt;
-              &lt;/html&gt;
-          </code></pre>
+            <pre ng-non-bindable class="mt"><code>
+                &lt;!doctype html&gt;
+                &lt;html ng-app="myApp"&gt;
+                    &lt;head&gt;
+                        &lt;script src="../js/angular.min.js"&gt;&lt;/script&gt;
+                    &lt;/head&gt;
+                    &lt;body&gt;
+                        &lt;ul ng-controller="myListController"&gt;
+                            &lt;li ng-repeat="item in items"&gt;
+                                {{ item.name }}
+                            &lt;/li&gt;
+                        &lt;/ul&gt;
+                    &lt;/body&gt;
+                &lt;/html&gt;
+            </code></pre>
     </section>
 
     <section>
@@ -261,7 +294,7 @@
                     class="show-off">&lt;my-directive>&lt;/my-directive&gt;</span>
             </li>
             <li class="mt">
-                <strong>atribute</strong>: <span class="show-off">&lt;span my-directive="value"&gt;&lt;/span&gt;</span>
+                <strong>attribute</strong>: <span class="show-off">&lt;span my-directive="value"&gt;&lt;/span&gt;</span>
             </li>
             <li class="mt">
                 <strong>class</strong>: <span class="show-off">&lt;span class="my-directive: value;"&gt;&lt;/span&gt;</span>
@@ -300,11 +333,7 @@
 <section data-background-color="#cb4b16">
     <h1><span class="white">Questions</span></h1>
 </section>
-<section data-background-color="#cb4b16">
-    <h3><span class="white">Question</span></h3>
-    <h1><span class="white">AngularJS or JSF?</span></h1>
-    <h1 class="fragment"><span class="white">Or GWT?</span></h1>
-</section>
+
 <section data-background="examples/assets/thanks.gif"><h1><span class="magenta">Thanks</span></h1></section>
 </div>
 </div>
@@ -313,7 +342,6 @@
 <script src="js/reveal.min.js"></script>
 
 <script>
-
     // Full list of configuration options available here:
     // https://github.com/hakimel/reveal.js#configuration
     Reveal.initialize({
@@ -347,7 +375,6 @@
             { src: 'plugin/multiplex/master.js', async: true }
             //{ src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } },
         ]
-
     });
 </script>
 </body>
