@@ -48,85 +48,6 @@
 
 <section>
     <section>
-        <h2>HTML Imports</h2>
-
-        <pre class="fragment"><code class="html" data-trim>
-&lt;script src&gt;
-        </code></pre>
-
-        <pre class="fragment"><code class="html" data-trim>
-&lt;link rel="stylesheet"&gt;
-        </code></pre>
-
-        <pre class="fragment"><code class="html" data-trim>
-&lt;img&gt;
-        </code></pre>
-
-        <p class="fragment">...</p>
-    </section>
-
-    <section>
-        <h2>Importing HTML</h2>
-
-        <ul>
-            <li>iframe's</li>
-            <li class="fragment">AJAX</li>
-            <li class="fragment">HAX!</li>
-        </ul>
-
-        <pre class="fragment" style="width: 300px;"><code class="html" data-trim>
-&lt;script type="text/html"&gt;
-        </code></pre>
-
-        <img src="lib/img/red-cross.png" class="fragment" width="300" height="50" style="position: absolute; top: 244px; left: 328px;">
-
-        <aside class="notes">
-            <ul>
-                <li>iframe: separate context, hard to style, heavy weight</li>
-                <li>AJAX: Great, but necessary to use JS?</li>
-                <li>HAX: embedded in strings, hidden as comments</li>
-            </ul>
-        </aside>
-    </section>
-
-    <section>
-        <h2>Web Components to the rescue</h2>
-
-        <pre><code class="html" data-trim>
-&lt;link rel="import" href="/path/to/imports.html"&gt;
-        </code></pre>
-        <aside class="notes">
-            <ul>
-                <li>Also works for JS, CSS and anything else an .html file can contain</li>
-            </ul>
-        </aside>
-    </section>
-
-    <section>
-        <h2>Bundling resources</h2>
-
-        <pre class="fragment"><code class="html" data-trim>
-&lt;link rel="import" href="bootstrap.html"&gt;
-        </code></pre>
-        
-        <div class="fragment">
-            <p>bootstrap.html could then be something like:</p>
-
-            <pre><code class="html" data-trim>
-&lt;link rel="stylesheet" href="bootstrap.css"&gt;
-&lt;link rel="stylesheet" href="fonts.css"&gt;
-&lt;script src="jquery.js"&gt;&lt;/script&gt;
-&lt;script src="bootstrap.js"&gt;&lt;/script&gt;
-&lt;script src="bootstrap-tooltip.js"&gt;&lt;/script&gt;
-&lt;script src="bootstrap-dropdown.js"&gt;&lt;/script&gt;
-...
-            </code></pre>
-        </div>
-    </section>
-</section>
-
-<section>
-    <section>
         <h2>Templating</h2>
 
         <pre><code class="html" data-trim>
@@ -607,19 +528,91 @@ shadow.appendChild(clone);
 </section>
 
 <section>
+    <section>
+        <h2>HTML Imports</h2>
+
+        <pre class="fragment"><code class="html" data-trim>
+&lt;script src&gt;
+        </code></pre>
+
+        <pre class="fragment"><code class="html" data-trim>
+&lt;link rel="stylesheet"&gt;
+        </code></pre>
+
+        <pre class="fragment"><code class="html" data-trim>
+&lt;img&gt;
+        </code></pre>
+
+        <p class="fragment">...</p>
+    </section>
+
+    <section>
+        <h2>Importing HTML</h2>
+
+        <ul>
+            <li>iframe's</li>
+            <li class="fragment">AJAX</li>
+            <li class="fragment">HAX!</li>
+        </ul>
+
+        <pre class="fragment" style="width: 300px;"><code class="html" data-trim>
+&lt;script type="text/html"&gt;
+        </code></pre>
+
+        <img src="lib/img/red-cross.png" class="fragment" width="300" height="50" style="position: absolute; top: 244px; left: 328px;">
+
+        <aside class="notes">
+            <ul>
+                <li>iframe: separate context, hard to style, heavy weight</li>
+                <li>AJAX: Great, but necessary to use JS?</li>
+                <li>HAX: embedded in strings, hidden as comments</li>
+            </ul>
+        </aside>
+    </section>
+
+    <section>
+        <h2>Web Components to the rescue</h2>
+
+        <pre><code class="html" data-trim>
+&lt;link rel="import" href="/path/to/imports.html"&gt;
+        </code></pre>
+        <aside class="notes">
+            <ul>
+                <li>Also works for JS, CSS and anything else an .html file can contain</li>
+            </ul>
+        </aside>
+    </section>
+
+    <section>
+        <h2>Bundling resources</h2>
+
+        <pre class="fragment"><code class="html" data-trim>
+&lt;link rel="import" href="bootstrap.html"&gt;
+        </code></pre>
+        
+        <div class="fragment">
+            <p>bootstrap.html could then be something like:</p>
+
+            <pre><code class="html" data-trim>
+&lt;link rel="stylesheet" href="bootstrap.css"&gt;
+&lt;link rel="stylesheet" href="fonts.css"&gt;
+&lt;script src="jquery.js"&gt;&lt;/script&gt;
+&lt;script src="bootstrap.js"&gt;&lt;/script&gt;
+&lt;script src="bootstrap-tooltip.js"&gt;&lt;/script&gt;
+&lt;script src="bootstrap-dropdown.js"&gt;&lt;/script&gt;
+...
+            </code></pre>
+        </div>
+    </section>
+</section>
+
+<section>
     <h2>Browser Support</h2>
 
     <table class="status-table">
         <tbody>
             <tr><td></td><td>Chrome</td><td>Opera</td><td>Firefox</td><td>Safari</td><td>IE/Edge</td></tr>
             <tr>
-                <td><img title="HTML Imports" src="http://webcomponents.org/img/icon-status-htmlimports.png" alt="HTML Imports" width="50" height="50" style="margin: 0;"></td>
-                <td><div style="background-color: green; width: 90px; height: 45px; margin: 0 auto;"></div></td>
-                <td><div style="background-color: green; width: 90px; height: 45px; margin: 0 auto;"></div></td>
-                <td><div style="background-color: yellow; width: 90px; height: 45px; margin: 0 auto;"></div></td>
-                <td><div style="background-color: red; width: 90px; height: 45px; margin: 0 auto;"></div></td>
-                <td><div style="background-color: red; width: 90px; height: 45px; margin: 0 auto;"></div></td>
-            </tr><tr>
                 <td><img title="Templates" src="http://webcomponents.org/img/icon-status-templates.png" alt="Templates" width="50" height="50" style="margin: 0;"></td>
                 <td><div style="background-color: green; width: 90px; height: 45px; margin: 0 auto;"></div></td>
                 <td><div style="background-color: green; width: 90px; height: 45px; margin: 0 auto;"></div></td>
@@ -640,16 +633,23 @@ shadow.appendChild(clone);
                 <td><div style="background-color: yellow; width: 90px; height: 45px; margin: 0 auto;"></div></td>
                 <td><div style="background-color: red; width: 90px; height: 45px; margin: 0 auto;"></div></td>
                 <td><div style="background-color: red; width: 90px; height: 45px; margin: 0 auto;"></div></td>
+            </tr><tr>
+                <td><img title="HTML Imports" src="http://webcomponents.org/img/icon-status-htmlimports.png" alt="HTML Imports" width="50" height="50" style="margin: 0;"></td>
+                <td><div style="background-color: green; width: 90px; height: 45px; margin: 0 auto;"></div></td>
+                <td><div style="background-color: green; width: 90px; height: 45px; margin: 0 auto;"></div></td>
+                <td><div style="background-color: yellow; width: 90px; height: 45px; margin: 0 auto;"></div></td>
+                <td><div style="background-color: red; width: 90px; height: 45px; margin: 0 auto;"></div></td>
+                <td><div style="background-color: red; width: 90px; height: 45px; margin: 0 auto;"></div></td>
             </tr>
         </tbody>
     </table>
 
     <aside class="notes">
         <ul>
-            <li>HTML Imports</li>
             <li>Templates</li>
             <li>Custom Elements</li>
             <li>Shadow DOM</li>
+            <li>HTML Imports</li>
         </ul>
     </aside>
 </section>
@@ -658,18 +658,6 @@ shadow.appendChild(clone);
     <section>
         <h2>Polymer</h2>
     </section>
-</section>
-
-<section>
-    <h2>Nice links</h2>
-
-    <ul>
-        <li>http://webcomponents.org/</li>
-        <li>https://www.polymer-project.org/1.0/</li>
-        <li></li>
-        <li></li>
-        <li></li>
-    </ul>
 </section>
 
 </div>
