@@ -6,366 +6,697 @@
 
     <title>Web Components</title>
 
-    <meta name="description" content="WebApps with AngularJS">
+    <meta name="description" content="Web Components">
     <meta name="author" content="Patrick de Wit">
 
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
 
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
 
-    <link rel="stylesheet" href="css/reveal.min.css">
-    <link rel="stylesheet" href="css/theme/solarized.css" id="theme">
-    <link rel="stylesheet" href="css/theme/custom.css">
-    <link rel="stylesheet" href="lib/css/solarized_dark.css">
+    <link rel="stylesheet" href="css/reveal.css">
+    <link rel="stylesheet" href="css/theme/sogeti.css" id="theme">
 
-    <script src="examples/js/angular.min.js"></script>
+    <!-- Code syntax highlighting -->
+    <link rel="stylesheet" href="lib/css/tomorrow.css">
 
-    <!-- If the query includes 'print-pdf', include the PDF print sheet -->
+    <!-- Printing and PDF exports -->
     <script>
-        if( window.location.search.match( /print-pdf/gi ) ) {
-            var link = document.createElement( 'link' );
-            link.rel = 'stylesheet';
-            link.type = 'text/css';
-            link.href = 'css/print/pdf.css';
-            document.getElementsByTagName( 'head' )[0].appendChild( link );
-        }
+        var link = document.createElement( 'link' );
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+        document.getElementsByTagName( 'head' )[0].appendChild( link );
     </script>
 
     <!--[if lt IE 9]>
     <script src="lib/js/html5shiv.js"></script>
     <![endif]-->
 </head>
-
 <body>
 
 <div class="reveal">
 <div class="slides">
+
 <section>
     <h1>Web Components</h1>
 
     <h3>The basics</h3>
 
-    <p><img src="lib/img/webcomponents.svg"></p>
+    <p><img src="lib/img/webcomponents.png"></p>
 </section>
 
 <section>
     <section>
-        <img src="examples/assets/patrick.jpg" height="300"/>
+        <h2>HTML Imports</h2>
 
-        <h3>Patrick de Wit</h3>
+        <pre class="fragment"><code class="html" data-trim>
+&lt;script src&gt;
+        </code></pre>
 
-        <p>Front End Software Engineer</p>
+        <pre class="fragment"><code class="html" data-trim>
+&lt;link rel="stylesheet"&gt;
+        </code></pre>
+
+        <pre class="fragment"><code class="html" data-trim>
+&lt;img&gt;
+        </code></pre>
+
+        <p class="fragment">...</p>
     </section>
+
     <section>
-        <p><span class="show-off">Things</span> I like:</p>
+        <h2>Importing HTML</h2>
+
         <ul>
-            <li>JavaScript</li>
-            <li>Skiing</li>
-            <li>Traveling</li>
-            <li>Suits</li>
-            <li>White Collar</li>
+            <li>iframe's</li>
+            <li class="fragment">AJAX</li>
+            <li class="fragment">HAX!</li>
         </ul>
-    </section>
-</section>
 
-<section data-background-color="#2aa198" class="quote">
-    <h2><q>"JavaScript is to Java as hamster is to ham"</q></h2>
-
-    <p>by Jens Ohlig</p>
-</section>
-
-<section>
-    <h1>What is <span class="show-off">AngularJS</span></h1>
-
-    <h3>An open-source web application framework maintained by Google<br/><br/>
-    	that helps developing SPA's</h3>
-</section>
-
-<section>
-    <h2>The principles</h2>
-    <ul class="fragment">
-        <li>Rapid development</li>
-        <li>Modularity</li>
-        <li>Built to be testable</li>
-        <li>Write less code</li>
-    </ul>
-</section>
-
-<section>
-    <h2>What it offers us</h2>
-    <ul class="fragment">
-        <li><span class="show-off">Controllers</span></li>
-        <li>Templates</li>
-        <li>Two-Way data bindings</li>
-        <li>Services</li>
-        <li><span class="show-off">Directives</span></li>
-        <li>Dependency Injection</li>
-    </ul>
-</section>
-
-<section>
-    <h2>The simplest example</h2>
-        <pre ng-non-bindable><code>
-            &lt;!DOCTYPE html&gt;
-            &lt;html ng-app&gt;
-                &lt;head&gt;
-                    &lt;script src="js/angular.min.js"&gt;&lt;/script&gt;
-                &lt;/head&gt;
-                &lt;body&gt;
-                    &lt;form&gt;
-                        &lt;label&gt;Your name?&lt;/label&gt;
-                        &lt;input type="text" ng-model="name" placeholder="Your name?"&gt;
-                    &lt;/form&gt;
-                    &lt;h3&gt;My name is {{ name }}!&lt;/h3&gt;
-                &lt;/body&gt;
-            &lt;/html&gt;
+        <pre class="fragment" style="width: 300px;"><code class="html" data-trim>
+&lt;script type="text/html"&gt;
         </code></pre>
 
-    <div class="hide-in-print mt fragment">
-        <hr>
-        <!doctype html>
-        <html ng-app>
-	        <body class="mt">
-		        <form>
-		            <label>What's your name?</label>
-		            <input class="big-input" type="text" ng-model="name" placeholder="What's your name?">
-		        </form>
-		        <h3 class="mt">My name is <span class="show-off">{{ name }}</span>!</h3>
-	        </body>
-        </html>
-    </div>
-</section>
+        <img src="lib/img/red-cross.png" class="fragment" width="300" height="50" style="position: absolute; top: 244px; left: 328px;">
 
-<section data-background="examples/assets/awesome.gif"></section>
+        <aside class="notes">
+            <ul>
+                <li>iframe: separate context, hard to style, heavy weight</li>
+                <li>AJAX: Great, but necessary to use JS?</li>
+                <li>HAX: embedded in strings, hidden as comments</li>
+            </ul>
+        </aside>
+    </section>
 
-<section>
-    <h2>$scope</h2>
+    <section>
+        <h2>Web Components to the rescue</h2>
 
-    <p><span class="show-off">$scope</span> is an object that refers to the application model.<br/> It
-        connects the <strong>View</strong> and the <strong>Controller</strong></p>
-
-    <div class="fragment">
-        <p class="mt">
-            myController.js
-        </p>
-        <pre><code>
-            function MyController($scope) {
-                $scope.name = 'Patrick de Wit';
-            }
+        <pre><code class="html" data-trim>
+&lt;link rel="import" href="/path/to/imports.html"&gt;
         </code></pre>
+        <aside class="notes">
+            <ul>
+                <li>Also works for JS, CSS and anything else an .html file can contain</li>
+            </ul>
+        </aside>
+    </section>
 
-        <p class="mt">
-            myView.html
-        </p>
-        <pre ng-non-bindable><code>
-            &lt;form ng-controller="MyController"&gt;
-                &lt;input type="text" ng-model="name"&gt;
-            &lt;/form&gt;
+    <section>
+        <h2>Bundling resources</h2>
+
+        <pre class="fragment"><code class="html" data-trim>
+&lt;link rel="import" href="bootstrap.html"&gt;
         </code></pre>
-    </div>
-</section>
+        
+        <div class="fragment">
+            <p>bootstrap.html could then be something like:</p>
 
-<section>
-	<section>
-		<h2>Controllers</h2>
-
-	    <p>The controller is a function that augments the <span class="show-off">$scope</span> object.<br/>
-	        It's used to add a value or to add a behavior to the <span class="show-off">$scope</span>.</p>
-
-	    <pre ng-non-bindable class="mt fragment"><code>
-	        function TodoCtrl($scope) {
-	            $scope.todos = [
-	                { text: 'Learn AngularJS', done: true  },
-	                { text: 'Create an App',   done: false }
-	            ];
-
-	            $scope.addTodo = function () {
-	                $scope.todos.push({ text: $scope.todoText, done: false });
-	                $scope.todoText = '';
-	            };
-	        };
-	    </code></pre>
-    </section>
-    <section>
-    	<h2>Result</h2>
-
-        <!doctype html>
-        <html ng-app>
-            <body>
-                <script>
-                    function TodoCtrl($scope) {
-                        $scope.todos = [
-                            { text: 'Learn AngularJS', done: true },
-                            { text: 'Create an App', done: false }
-                        ];
-                        $scope.addTodo = function () {
-                            if ($scope.todoText) {
-                                $scope.todos.push({ text: $scope.todoText, done: false });
-                                $scope.todoText = '';
-                            }
-                        };
-                    };
-                </script>
-
-                <div class="mt" ng-controller="TodoCtrl">
-                    <ul class="no-bullets">
-                        <li ng-repeat="todo in todos">
-                            <label>
-                                <input type="checkbox" ng-model="todo.done" class="big-checkbox">
-                                <span class="done-{{ todo.done }}">{{ todo.text }}</span>
-                            </label>
-                        </li>
-                    </ul>
-                    <form class="mt" ng-submit="addTodo()">
-                        <input placeholder="add new task" class="big-input" type="text" ng-model="todoText">
-                        <button class="big-button" type="submit">Add</button>
-                    </form>
-                    <small class="fragment mt">{{ todos | json }}</small>
-                </div>
-            </body>
-        </html>
-    </section>
-</section>
-
-<section>
-    <section>
-        <h2>Directives</h2>
-        <blockquote>"Teach new tricks to the HTML"</blockquote>
-        <ol class="mt fragment">
-            <li>Create custom attributes</li>
-            <li>Create custom HTML tags<br/>
-                <small>(based on W3C <i class="show-off">webcomponents</i> specification)</small>
-            </li>
-        </ol>
-    </section>
-
-    <section>
-        <h2>Directives
-            <small>2</small>
-        </h2>
-        <p>All the attributes that begin with <span class="show-off">"ng"</span> are AngularJS <span
-                class="show-off">directives</span>.</p>
-        <ul class="mt fragment">
-            <li>ng-app</li>
-            <li>ng-controller</li>
-            <li>ng-model</li>
-            <li>ng-repeat</li>
-            <li>ng-click</li>
-            <li>ng-view</li>
-            <li>...</li>
-        </ul>
-    </section>
-
-    <section>
-        <h2>Directives
-            <small>3</small>
-        </h2>
-        <p>How to use <i>directives</i></p>
-            <pre ng-non-bindable class="mt"><code>
-                &lt;!doctype html&gt;
-                &lt;html ng-app="myApp"&gt;
-                    &lt;head&gt;
-                        &lt;script src="../js/angular.min.js"&gt;&lt;/script&gt;
-                    &lt;/head&gt;
-                    &lt;body&gt;
-                        &lt;ul ng-controller="myListController"&gt;
-                            &lt;li ng-repeat="item in items"&gt;
-                                {{ item.name }}
-                            &lt;/li&gt;
-                        &lt;/ul&gt;
-                    &lt;/body&gt;
-                &lt;/html&gt;
+            <pre><code class="html" data-trim>
+&lt;link rel="stylesheet" href="bootstrap.css"&gt;
+&lt;link rel="stylesheet" href="fonts.css"&gt;
+&lt;script src="jquery.js"&gt;&lt;/script&gt;
+&lt;script src="bootstrap.js"&gt;&lt;/script&gt;
+&lt;script src="bootstrap-tooltip.js"&gt;&lt;/script&gt;
+&lt;script src="bootstrap-dropdown.js"&gt;&lt;/script&gt;
+...
             </code></pre>
+        </div>
     </section>
-
-    <section>
-        <h2>Directives
-            <small>4</small>
-        </h2>
-        <p>You can also create you own <i>directive</i>.</p>
-        <ul class="mt fragment">
-            <li>
-                <strong>element</strong>: <span
-                    class="show-off">&lt;my-directive>&lt;/my-directive&gt;</span>
-            </li>
-            <li class="mt">
-                <strong>attribute</strong>: <span class="show-off">&lt;span my-directive="value"&gt;&lt;/span&gt;</span>
-            </li>
-            <li class="mt">
-                <strong>class</strong>: <span class="show-off">&lt;span class="my-directive: value;"&gt;&lt;/span&gt;</span>
-            </li>
-            <li class="mt">
-                <strong>comment</strong>: <span class="show-off">&lt;!-- directive: my-directive value --&gt;</span>
-            </li>
-        </ul>
-    </section>
-
-</section>
-
-<section data-background-color="#268bd2" class="title">
-    <h1>Instant Search</h1>
-    <h3><a href="examples/search.html" target="_blank">Demo</a></h3>
-</section>
-
-<section data-background-color="#268bd2" class="title">
-    <h1>Instagram</h1>
-    <h3><a href="examples/instagram.html" target="_blank">Demo</a></h3>
 </section>
 
 <section>
-    <h2>Learn</h2>
+    <section>
+        <h2>Templating</h2>
+
+        <pre><code class="html" data-trim>
+&lt;template&gt;
+        </code></pre>
+
+        <blockquote class="fragment" style="width: auto;">... does not have to be recreated each time ...</blockquote>
+
+        <aside class="notes">
+            Unused at load, instantiated later on at runtime
+        </aside>
+    </section>
+
+    <section>
+        <h2>Examples</h2>
+
+        <pre><code class="html" data-trim>
+&lt;template id="mytemplate"&gt;
+  &lt;img src="" alt="great image"&gt;
+  &lt;div class="comment"&gt;&lt;/div&gt;
+&lt;/template&gt;
+        </code></pre>
+        
+        <div class="fragment">
+            <p>Also inside for examples tables:</p>
+            <pre><code class="html" data-trim>
+&lt;table&gt;
+    &lt;tr&gt;
+      &lt;template id="cells-to-repeat"&gt;
+        &lt;td&gt;some content&lt;/td&gt;
+      &lt;/template&gt;
+    &lt;/tr&gt;
+&lt;/table&gt;
+            </code></pre>
+        </div>
+    </section>
+
+    <section>
+        <h2>Properties</h2>
+
+        <ul>
+            <li>Content is unused until activated</li>
+            <li class="fragment">Content is considered not to be in the document</li>
+            <li class="fragment">No side effects</li>
+            <li class="fragment">Templates can be placed anywhere</li>
+        </ul>
+
+        <aside class="notes">
+            <ul>
+                <li>Scripts don't run, images don't load, audio doesn't play, ...</li>
+                <li>Can contain anything that is allowed in the parent</li>
+            </ul>
+        </aside>
+    </section>
+
+    <section>
+        <h2>Activating a template</h2>
+
+        <pre><code class="html" data-trim>
+&lt;template id="mytemplate"&gt;
+  &lt;img src="" alt="great image"&gt;
+  &lt;div class="comment"&gt;&lt;/div&gt;
+&lt;/template&gt;
+        </code></pre>
+
+        <pre class="fragment"><code class="javascript" data-trim>
+var t = document.querySelector('#mytemplate');
+t.content.querySelector('img').src = 'logo.png';
+
+var clone = document.importNode(t.content, true);
+document.body.appendChild(clone);
+        </code></pre>
+
+        <aside class="notes">
+            <ul>
+                <li>img src is populated at runtime</li>
+                <li>importNode(externalNode, deep)</li>
+                <li>importNode returns a new node with no parent</li>
+            </ul>
+        </aside>
+    </section>
+
+    <section id="templatingExample">
+        <h2>Live Example!</h2>
+
+        <button onclick="useIt()">Click me</button>
+        <div id="container"></div>
+        <script>
+            function useIt() {
+                var content = document.querySelector('#templatingExample template').content;
+                // Update something in the template DOM.
+                var span = content.querySelector('span');
+                span.textContent = parseInt(span.textContent) + 1;
+                document.querySelector('#templatingExample #container').appendChild(
+                    document.importNode(content, true));
+            }
+        </script>
+
+        <template>
+            <div>Template used: <span>0</span></div>
+            <script>alert('Thanks!')</script>
+        </template>
+
+        <aside class="notes">
+            Browser compatability will be covered later!
+            Evergreen browsers support most features already
+        </aside>
+    </section>
+</section>
+
+<section>
+    <section>
+        <h2>Custom Elements</h2>
+
+        <img src="lib/img/div-soup.png" width="100%" class="fragment">
+
+        <aside class="notes">
+            <ul>
+                <li>HTML is great for structuring documents, but has limited vocabulary</li>
+                <li>Introducing custom elements</li>
+            </ul>
+        </aside>
+    </section>
+
+    <section>
+        <h2>Registering Elements</h2>
+
+        <pre class="fragment"><code class="javascript" data-trim>
+var MyElement = document.registerElement('my-element');
+        </code></pre>
+
+        <div class="fragment">
+            <p>is equivalent to...</p>
+            <pre><code class="javascript" data-trim>
+var MyElement = document.registerElement('my-element', {
+  prototype: Object.create(HTMLElement.prototype)
+});
+            </code></pre>
+        </div>
+
+        <aside class="notes">
+            <ul>
+                <li>registerElement(tag-name, options)</li>
+                <li>returns constructor</li>
+                <li>options describes the element's prototype</li>
+                <li>tag-name MUST contain dash</li>
+            </ul>
+        </aside>
+    </section>
+        
+    <section>
+        <h2>Registering Elements</h2>
+
+        <pre class="fragment"><code class="javascript" data-trim>
+document.createElement('myelement').__proto__ === HTMLUnknownElement.prototype
+document.createElement('my-element').__proto__ === HTMLElement.prototype
+        </code></pre>
+    
+        <aside class="notes">
+            <ul>
+                <li>Forward compatibility &amp; distinguishing</li>
+                <li>Register may be done after use</li>
+                <li>With dash: unresolved, without dash: unknown</li>
+                <li>HTMLUnknownElement = HTMLElement extension</li>
+            </ul>
+        </aside>
+    </section>
+
+    <section>
+        <h2>Instantiating Custom Elements</h2>
+
+        <div class="fragment">
+            <p>from HTML...</p>
+            <pre><code class="html" data-trim>
+&lt;my-element&gt;&lt;/my-element&gt;
+            </code></pre>
+        </div>
+
+        <div class="fragment">
+            <p>from JS...</p>
+            <pre><code class="javascript" data-trim>
+document.body.appendChild(new MyElement());
+            </code></pre>
+        </div>
+    </section>
+
+    <section>
+        <h2>Extending Elements</h2>
+
+        <pre class="fragment"><code class="javascript" data-trim>
+var MyElement = document.registerElement('my-element', {
+  prototype: Object.create(HTMLButtonElement.prototype),
+  extends: 'button'
+});
+        </code></pre>
+    </section>
+
+    <section>
+        <h2>Instantiating Extended Elements</h2>
+
+        <div class="fragment">
+            <p>from HTML...</p>
+            <pre><code class="html" data-trim>
+&lt;button is="my-element"&gt;
+            </code></pre>
+        </div>
+
+        <div class="fragment">
+            <p>from JS...</p>
+            <pre><code class="javascript" data-trim>
+var myElement = document.createElement('button', 'my-element');
+            </code></pre>
+
+            <p>or...</p>
+            <pre><code class="javascript" data-trim>
+var myElement = new MyElement();
+            </code></pre>
+        </div>
+
+        <aside class="notes">
+            <ul>
+                <li>Overloaded version document.createElement()</li>
+                <li>is="" attribute is second parameter</li>
+            </ul>
+        </aside>
+    </section>
+    
+    <section id="CustomElementFunctionsExample">
+        <h2>Adding JS properties and methods</h2>
+
+        <pre class="fragment"><code class="javascript" data-trim>
+var FunctionalElement = document.registerElement('functional-element', {
+    prototype: Object.create(HTMLElement.prototype, {
+        five: {
+            get: function() { return 5; }
+        },
+        notify: {
+            value: function() {
+                alert('notify() called');
+            }
+        }
+    })
+});
+        </code></pre>
+
+        <script>
+            var FunctionalElement = document.registerElement('functional-element', {
+                prototype: Object.create(HTMLElement.prototype, {
+                    five: {
+                        get: function() { return 5; }
+                    },
+                    notify: {
+                        value: function() {
+                            alert('notify() called');
+                        }
+                    }
+                })
+            });
+        </script>
+
+        <aside class="notes">
+            FunctionalElement.prototype.notify()
+            <hr>
+            var functionalElement = new FunctionalElement()
+            functionalElement.notify()
+        </aside>
+    </section>
+
+    <section>
+        <h2>Lifecycle Callbacks</h2>
+
+        <img src="lib/img/callback-lifecycle.png">
+
+        <aside class="notes">
+            attrName, oldVal, newVal
+        </aside>
+    </section>
+
+    <section id="CustomElementExample">
+        <h2>Live Example!</h2>
+
+        <pre><code class="javascript" data-trim>
+var MyElementPrototype = Object.create(HTMLButtonElement.prototype);
+MyElementPrototype.createdCallback = function () {
+    this.textContent = "I'm an my-element button!";
+};
+
+var MyElement = document.registerElement('my-element', {
+    prototype: MyElementPrototype,
+    extends: 'button'
+});
+
+var testdiv = document.querySelector('#CustomElementExample #testdiv');
+testdiv.appendChild(new MyElement());
+testdiv.appendChild(document.createElement('button', 'my-element'));
+        </code></pre>
+
+        <pre class="fragment"><code class="html" data-trim>
+&lt;div id="testdiv"&gt;&lt;button is="my-element"&gt;&lt;/button&gt;&lt;/div&gt;
+
+        </code></pre>
+        
+        <div class="fragment">
+            <div id="testdiv"><button is="my-element"></button></div>
+
+            <script>
+                var MyElementPrototype = Object.create(HTMLButtonElement.prototype);
+                MyElementPrototype.createdCallback = function () {
+                    this.textContent = "I'm an my-element button!";
+                };
+
+                var MyElement = document.registerElement('my-element', {
+                    prototype: MyElementPrototype,
+                    extends: 'button'
+                });
+
+                var testdiv = document.querySelector('#CustomElementExample #testdiv');
+                testdiv.appendChild(new MyElement());
+                testdiv.appendChild(document.createElement('button', 'my-element'));
+            </script>
+        </div>
+    </section>
+</section>
+
+<section>
+    <section>
+        <h2>Shadow DOM</h2>
+
+        <pre><code class="html" data-trim>
+&lt;input id="slider-example" type="range"&gt;
+        </code></pre>
+
+        <p>shows...</p>
+
+        <input id="foo" type="range">
+
+        <aside class="notes">
+            document.getElementById("slider-example").firstChild;
+        </aside>
+    </section>
+
+    <section id="shadow-dom-example">
+        <h2>Shadow DOM</h2>
+
+        <pre><code class="html" data-trim>
+&lt;button&gt;Hello, world!&lt;/button&gt;
+        </code></pre>
+
+        <pre><code class="javascript" data-trim>
+var host = document.querySelector('button');
+var root = host.createShadowRoot();
+root.textContent = 'Bye world!';
+        </code></pre>
+
+        <div class="fragment">
+            <button>Hello, world!</button>
+            
+            <script>
+                var host = document.querySelector('#shadow-dom-example button');
+                var root = host.createShadowRoot();
+                root.textContent = 'Bye world!';
+            </script>
+        </div>
+
+        <aside class="notes">
+            document.querySelector('#shadow-dom-example button').textContent
+        </aside>
+    </section>
+
+    <section id="shadow-dom-sandbox">
+        <h2>Without Shadow DOM</h2>
+
+        <pre><code class="html" data-trim>
+&lt;p&gt;I am on the outside&lt;/p&gt;
+
+&lt;div&gt;
+    &lt;style&gt;
+        p {color: red;}
+    &lt;/style&gt;
+    &lt;p&gt;My name is:&lt;/p&gt;
+    &lt;p&gt;Patrick&lt;/p&gt;
+&lt;/div&gt;
+        </code></pre>
+        
+        <div class="fragment">
+            <p>I am on the outside</p>
+
+            <div>
+                <style>#shadow-dom-sandbox p {color: red;}</style>
+                <p>My name is:</p>
+                <p>Patrick</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="with-shadow-dom-example">
+        <h2>With Shadow DOM</h2>
+
+        <pre><code class="html" data-trim>
+&lt;p&gt;I am on the outside&lt;/p&gt;
+&lt;p id="name-tag"&gt;Patrick&lt;/p&gt;
+
+&lt;template id="my-template"&gt;
+    &lt;style&gt;
+        p {color: red;}
+    &lt;/style&gt;
+    &lt;p&gt;My name is:&lt;/p&gt;
+    &lt;p&gt;&lt;content&gt;&lt;/content&gt;&lt;/p&gt;
+&lt;/template&gt;
+        </code></pre>
+
+        <pre><code class="javascript" data-trim>
+var shadow = document.querySelector('#name-tag').createShadowRoot();
+var template = document.querySelector('#my-template');
+var clone = document.importNode(template.content, true);
+shadow.appendChild(clone);
+        </code></pre>
+        
+        <div class="fragment">
+            <p>I am on the outside</p>
+            <p id="name-tag">Patrick</p>
+
+            <template id="my-template">
+                <style>
+                    p {color: red;}
+                </style>
+                <p>My name is:</p>
+                <p><content></content></p>
+            </template>
+
+            <script>
+                var shadow = document.querySelector('#with-shadow-dom-example #name-tag').createShadowRoot();
+                var template = document.querySelector('#with-shadow-dom-example #my-template');
+                var clone = document.importNode(template.content, true);
+                shadow.appendChild(clone);
+            </script>
+        </div>
+
+        <aside class="notes">
+            document.querySelector('#name-tag').textContent = 'Henk';
+        </aside>
+    </section>
+
+    <section id="shadow-multiple-contents-example">
+        <h2>Multiple Contents Tags</h2>
+        
+        <pre><code class="html" data-trim>
+&lt;div id="name-tag"&gt;
+    &lt;span class="first"&gt;Bob&lt;/span&gt;
+    &lt;span&gt;B. Love&lt;/span&gt;
+&lt;/div&gt;
+
+&lt;template id="my-template"&gt;
+    &lt;p&gt;First name: &lt;content select=".first"&gt;&lt;/content&gt;&lt;/p&gt;
+    &lt;p&gt;Last name: &lt;content select="span"&gt;&lt;/content&gt;&lt;/p&gt;
+&lt;/template&gt;
+        </code></pre>
+
+        <div class="fragment">
+            <div id="name-tag">
+              <span class="first">Bob</span>
+              <span>B. Love</span>
+            </div>
+
+            <template id="my-template">
+                <p>First name: <content select=".first"></content></p>
+                <p>Last name: <content select="span"></content></p>
+            </template>
+
+            <script>
+                var shadow = document.querySelector('#shadow-multiple-contents-example #name-tag').createShadowRoot();
+                var template = document.querySelector('#shadow-multiple-contents-example #my-template');
+                var clone = document.importNode(template.content, true);
+                shadow.appendChild(clone);
+            </script>
+        </div>
+    </section>
+</section>
+
+<section>
+    <h2>Browser Support</h2>
+
+    <table class="status-table">
+        <tbody>
+            <tr><td></td><td>Chrome</td><td>Opera</td><td>Firefox</td><td>Safari</td><td>IE/Edge</td></tr>
+            <tr>
+                <td><img title="HTML Imports" src="http://webcomponents.org/img/icon-status-htmlimports.png" alt="HTML Imports" width="50" height="50" style="margin: 0;"></td>
+                <td><div style="background-color: green; width: 90px; height: 45px; margin: 0 auto;"></div></td>
+                <td><div style="background-color: green; width: 90px; height: 45px; margin: 0 auto;"></div></td>
+                <td><div style="background-color: yellow; width: 90px; height: 45px; margin: 0 auto;"></div></td>
+                <td><div style="background-color: red; width: 90px; height: 45px; margin: 0 auto;"></div></td>
+                <td><div style="background-color: red; width: 90px; height: 45px; margin: 0 auto;"></div></td>
+            </tr><tr>
+                <td><img title="Templates" src="http://webcomponents.org/img/icon-status-templates.png" alt="Templates" width="50" height="50" style="margin: 0;"></td>
+                <td><div style="background-color: green; width: 90px; height: 45px; margin: 0 auto;"></div></td>
+                <td><div style="background-color: green; width: 90px; height: 45px; margin: 0 auto;"></div></td>
+                <td><div style="background-color: green; width: 90px; height: 45px; margin: 0 auto;"></div></td>
+                <td><div style="background-color: green; width: 90px; height: 45px; margin: 0 auto;"></div></td>
+                <td><div style="background-color: yellow; width: 90px; height: 45px; margin: 0 auto;"></div></td>
+            </tr><tr>
+                <td><img title="Custom Elements" src="http://webcomponents.org/img/icon-status-customelements.png" alt="Custom Elements" width="50" height="50" style="margin: 0;"></td>
+                <td><div style="background-color: green; width: 90px; height: 45px; margin: 0 auto;"></div></td>
+                <td><div style="background-color: green; width: 90px; height: 45px; margin: 0 auto;"></div></td>
+                <td><div style="background-color: yellow; width: 90px; height: 45px; margin: 0 auto;"></div></td>
+                <td><div style="background-color: red; width: 90px; height: 45px; margin: 0 auto;"></div></td>
+                <td><div style="background-color: red; width: 90px; height: 45px; margin: 0 auto;"></div></td>
+            </tr><tr>
+                <td><img title="Shadow DOM" src="http://webcomponents.org/img/icon-status-shadowdom.png" alt="Shadow DOM" width="50" height="50" style="margin: 0;"></td>
+                <td><div style="background-color: green; width: 90px; height: 45px; margin: 0 auto;"></div></td>
+                <td><div style="background-color: green; width: 90px; height: 45px; margin: 0 auto;"></div></td>
+                <td><div style="background-color: yellow; width: 90px; height: 45px; margin: 0 auto;"></div></td>
+                <td><div style="background-color: red; width: 90px; height: 45px; margin: 0 auto;"></div></td>
+                <td><div style="background-color: red; width: 90px; height: 45px; margin: 0 auto;"></div></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <aside class="notes">
+        <ul>
+            <li>HTML Imports</li>
+            <li>Templates</li>
+            <li>Custom Elements</li>
+            <li>Shadow DOM</li>
+        </ul>
+    </aside>
+</section>
+
+<section>
+    <section>
+        <h2>Polymer</h2>
+    </section>
+</section>
+
+<section>
+    <h2>Nice links</h2>
+
     <ul>
-        <li>Thinkster - <a href="http://www.thinkster.io/pick/GtaQ0oMGIl/a-better-way-to-learn-angularjs"
-                           target="_blank">http://thinkster.io/</a></li>
-        <li>Year of Moo - <a href="http://www.yearofmoo.com/" target="_blank">http://www.yearofmoo.com/</a>
-        </li>
-        <li>HTML5 Rocks - <a href="http://www.html5rocks.com" target="_blank">http://html5rocks.com/</a>
-        </li>
-        <li>TodoMVC - <a href="http://todomvc.com/" target="_blank">http://todomvc.com/</a></li>
+        <li>http://webcomponents.org/</li>
+        <li>https://www.polymer-project.org/1.0/</li>
+        <li></li>
+        <li></li>
+        <li></li>
     </ul>
 </section>
 
-<section data-background-color="#cb4b16">
-    <h1><span class="white">Questions</span></h1>
-</section>
-
-<section data-background="examples/assets/thanks.gif"><h1><span class="magenta">Thanks</span></h1></section>
 </div>
 </div>
 
 <script src="lib/js/head.min.js"></script>
-<script src="js/reveal.min.js"></script>
+<script src="js/reveal.js"></script>
 
 <script>
-    // Full list of configuration options available here:
+    // Full list of configuration options available at:
     // https://github.com/hakimel/reveal.js#configuration
     Reveal.initialize({
         controls: true,
         progress: true,
         history: true,
         center: true,
-        theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
-        transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
-        multiplex: {
-            // Example values. To generate your own, see the socket.io server instructions.
-            secret: '14024664357134213089', // null so the clients do not have control of the master presentation
-            id: 'b8230cc77436495e', // id, obtained from socket.io server
-            url: 'modernjavascript.herokuapp.com:80' // Location of socket.io server
-        },
-        // Parallax scrolling
-        // parallaxBackgroundImage: 'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg',
-        // parallaxBackgroundSize: '2100px 900px',
-        // Optional libraries used to extend on reveal.js
+
+        transition: 'slide', // none/fade/slide/convex/concave/zoom
+
+        // Optional reveal.js plugins
         dependencies: [
             { src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
-            //{ src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
-            //{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
-            { src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
-            { src: 'plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
-            { src: '//cdnjs.cloudflare.com/ajax/libs/socket.io/0.9.10/socket.io.min.js', async: true },
-            { src: 'plugin/multiplex/master.js', async: true }
-            //{ src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } },
+            // { src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+            // { src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+            { src: 'plugin/highlight/highlight.js', async: true, condition: function() { return !!document.querySelector( 'pre code' ); }, callback: function() { hljs.initHighlightingOnLoad(); } },
+            { src: 'plugin/zoom-js/zoom.js', async: true },
+            { src: 'plugin/notes/notes.js', async: true }
         ]
     });
 </script>
