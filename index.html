@@ -62,7 +62,7 @@
     </section>
 
     <section>
-        <h2>Examples</h2>
+        <h2>Example Template</h2>
 
         <pre><code class="html" data-trim>
 &lt;template id="mytemplate"&gt;
@@ -72,7 +72,7 @@
         </code></pre>
         
         <div class="fragment">
-            <p>Also inside for examples tables:</p>
+            <p>Inside a table:</p>
             <pre><code class="html" data-trim>
 &lt;table&gt;
     &lt;tr&gt;
@@ -130,18 +130,18 @@ document.body.appendChild(clone);
         </aside>
     </section>
 
-    <section id="templatingExample">
+    <section id="templating-example">
         <h2>Live Example!</h2>
 
         <button onclick="useIt()">Click me</button>
         <div id="container"></div>
         <script>
             function useIt() {
-                var content = document.querySelector('#templatingExample template').content;
+                var content = document.querySelector('#templating-example template').content;
                 // Update something in the template DOM.
                 var span = content.querySelector('span');
                 span.textContent = parseInt(span.textContent) + 1;
-                document.querySelector('#templatingExample #container').appendChild(
+                document.querySelector('#templating-example #container').appendChild(
                     document.importNode(content, true));
             }
         </script>
@@ -194,6 +194,7 @@ var MyElement = document.registerElement('my-element', {
                 <li>returns constructor</li>
                 <li>options describes the element's prototype</li>
                 <li>tag-name MUST contain dash</li>
+                <li>Forward compatibility &amp; distinguishing</li>
             </ul>
         </aside>
     </section>
@@ -201,17 +202,16 @@ var MyElement = document.registerElement('my-element', {
     <section>
         <h2>Registering Elements</h2>
 
-        <pre class="fragment"><code class="javascript" data-trim>
+        <pre><code class="javascript" data-trim>
 document.createElement('myelement').__proto__ === HTMLUnknownElement.prototype
 document.createElement('my-element').__proto__ === HTMLElement.prototype
         </code></pre>
     
         <aside class="notes">
             <ul>
-                <li>Forward compatibility &amp; distinguishing</li>
-                <li>Register may be done after use</li>
                 <li>With dash: unresolved, without dash: unknown</li>
                 <li>HTMLUnknownElement = HTMLElement extension</li>
+                <li>Register may be done after use</li>
             </ul>
         </aside>
     </section>
@@ -309,10 +309,10 @@ var FunctionalElement = document.registerElement('functional-element', {
         </script>
 
         <aside class="notes">
-            FunctionalElement.prototype.notify()
-            <hr>
             var functionalElement = new FunctionalElement()
             functionalElement.notify()
+            <hr>
+            FunctionalElement.prototype.notify()
         </aside>
     </section>
 
